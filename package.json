@@ -1,0 +1,12 @@
+{
+  "name": "woodcut-optimizer",
+  "version": "1.0.0",
+  "description": "木工工作室短料下料优化（一维下料 / Cutting Stock）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

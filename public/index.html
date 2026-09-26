@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>木工短料下料优化</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="no-print">
+    <h1>木工短料下料优化</h1>
+    <p class="subtitle">输入原料与裁片规格，自动计算用料最省的裁切方案（总裁片数 ≤ 12）</p>
+  </header>
+
+  <main>
+    <!-- 输入区 -->
+    <section class="panel no-print">
+      <h2>参数设置</h2>
+      <div class="base-fields">
+        <label>
+          原料长度（mm）
+          <input type="number" id="stockLength" min="0" step="any" value="2440">
+        </label>
+        <label>
+          锯缝宽度（mm）
+          <input type="number" id="kerf" min="0" step="any" value="3">
+        </label>
+      </div>
+
+      <h2>裁片规格</h2>
+      <table class="spec-table">
+        <thead>
+          <tr><th>规格</th><th>长度（mm）</th><th>数量</th><th></th></tr>
+        </thead>
+        <tbody id="specRows"></tbody>
+      </table>
+      <div class="actions">
+        <button type="button" id="addSpec" class="btn secondary">＋ 添加规格</button>
+        <button type="button" id="calc" class="btn primary">开始计算</button>
+      </div>
+      <div id="error" class="error hidden"></div>
+    </section>
+
+    <!-- 结果区（打印时仅保留此区域） -->
+    <section id="resultPanel" class="panel hidden">
+      <div class="result-head">
+        <h2>裁切方案</h2>
+        <button type="button" id="printBtn" class="btn secondary no-print">🖨 打印结果</button>
+      </div>
+      <div id="summary" class="summary"></div>
+      <div id="stocks"></div>
+    </section>
+  </main>
+
+  <footer class="no-print">
+    <p>锯缝仅在同根原料相邻两片之间计算；根数最少优先，余料尽量集中。</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

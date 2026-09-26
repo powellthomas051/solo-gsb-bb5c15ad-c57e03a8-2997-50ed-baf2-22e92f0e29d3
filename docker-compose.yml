@@ -1,0 +1,9 @@
+services:
+  woodcut:
+    build: .
+    container_name: woodcut-optimizer
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+    restart: unless-stopped
